@@ -14,12 +14,12 @@ Username MUST BE unique.
 Password CAN NOT be the same as username.
 ```
 ###### The User Object
-|Name         |Type         |Description            |Conditions                           | 
+|Name         |Type         |Description            |Conditions                           |
 |:-----------:|:-----------:| :--------------------:|:------------------------------------|
-|**username** |*string*     |`Choosen username`     |`Required  and Uninque`                 |
-|**password** |*string*     |`Choosen password`     |`Required | NOT same as user`        |
-|**user_id**  |*integer*    |`Id in params`         |`Required | Unique`                  |
-|**picture**  |*BLOB*       |`User provided picture`|`Optional`                           |
+|**username** |*string*     |`Choosen username`     |Required  \| Uninque                 |
+|**password** |*string*     |`Choosen password`     |Required \| NOT same as user         |
+|**user_id**  |*integer*    |`Id in params`         |Required \| Unique                   |
+|**picture**  |*BLOB*       |`User provided picture`|Optional                             |
 ___
 
 
@@ -29,9 +29,9 @@ ___
 ###### Parameters
 |Name         |Type         |Description            |Conditions                           | 
 |:-----------:|:-----------:| :--------------------:|:------------------------------------|
-|**username** |*string*     |`Choosen username`     |`Required  and Uninque`                 |
-|**password** |*string*     |`Choosen password`     |`Required | NOT same as user`        |
-|**picture**  |*BLOB*       |`User provided picture`|`Optional`                           |
+|**username** |*string*     |`Choosen username`     |Required  \| Uninque                 |
+|**password** |*string*     |`Choosen password`     |Required \| NOT same as user         |
+|**picture**  |*BLOB*       |`User provided picture`|Optional                             |
 ##### In `BODY` sent as *JSON* :
 ```js
 	{
@@ -50,8 +50,8 @@ ___
 ###### Parameters
 |Name         |Type         |Description            |Conditions                           | 
 |:-----------:|:-----------:| :--------------------:|:------------------------------------|
-|**username** |*string*     |`Choosen username`     |`Required  and Uninque`                 |
-|**password** |*string*     |`Choosen password`     |`Required | NOT same as user`        |
+|**username** |*string*     |`Choosen username`     |Required  \| Uninque                 |
+|**password** |*string*     |`Choosen password`     |Required \| NOT same as user         |
 ##### In `BODY` sent as *JSON* :
 ```js
 	{
@@ -68,9 +68,9 @@ ___
 ###### Parameters
 |Name         |Type         |Description            |Conditions                           | 
 |:-----------:|:-----------:| :--------------------:|:------------------------------------|
-|**username** |*string*     |`Choosen username`     |`Required  and Uninque`                 |
-|**password** |*string*     |`Choosen password`     |`Required`                           |
-|**id**       |*integer*    |`Id in params`         |`Required`                           |
+|**username** |*string*     |`Choosen username`     |Required  \| Uninque                 |
+|**password** |*string*     |`Choosen password`     |Required                             |
+|**id**       |*integer*    |`Id in params`         |Required                             |
 ##### In `HEADERS` sent as *JSON* :
 ```js
 	{
@@ -94,11 +94,11 @@ ___
 ###### Parameters
 |Name              |Type         |Description            |Conditions                           | 
 |:----------------:|:-----------:| :--------------------:|:------------------------------------|
-|**username**      |*string*     |`Choosen username`     |`Only if Updated`                    |
-|**password**      |*string*     |`Choosen password`     |`Only if Updated`                    |
-|**id**            |*integer*    |`Id in params`         |`Required`                           |
-|**picture**       |*BLOB*       |`User provided picture`|`Optional`                           |
-|**oldPassword**   |*string*     |`Current password `    |`Required`                           |
+|**username**      |*string*     |`Choosen username`     |Only if Updated                      |
+|**password**      |*string*     |`Choosen password`     |Only if Updated                      |
+|**id**            |*integer*    |`Id in params`         |Required                             |
+|**picture**       |*BLOB*       |`User provided picture`|Optional                             |
+|**oldPassword**   |*string*     |`Current password `    |Required                             |
 ##### In `HEADERS` sent as *JSON* :
 ```js
 	{
@@ -135,15 +135,15 @@ You can NOT share or delete default board.
 ###### The Board Object
 |Name              |Type         |Description                    |Conditions                            | 
 |:----------------:|:-----------:|:-----------------------------:|:-------------------------------------|
-|**id**            |*integer*    |`Board id`                     |`Required | Unique | Auto-populated`  |
-|**is_default**    |*boolean*    |`Whether or not is default`    |`Required | Can't be changed`         |
-|**name**          |*string*     |`Name of Board`                |`Required`                            |
-|**description**   |*string*     |`Board's  description`         |`Optional`                            |
-|**owner**         |*integer*    |`Creator of board`             |`Required | auto-populated`           |
-|**thumbnail**     |*BLOB*       |`User provided thumbnail`      |`Optional`                            |
-|**is_public**     |*boolean*    |`Whether or not is public`     |`Required | default value is`*`false`*|
-|**saved_on**      |*timestamp*  |`Date saved`                   |`Required | auto-populated`           |
-|**updated_on**    |*timestamp*  |`Last update`                  |`Required | auto-populated`           |
+|**id**            |*integer*    |`Board id`                     |Required \| Unique \| Auto-populated  |
+|**is_default**    |*boolean*    |`Whether or not is default`    |Required \| Can't be changed          |
+|**name**          |*string*     |`Name of Board`                |Required                              |
+|**description**   |*string*     |`Board's  description`         |Optional                              |
+|**owner**         |*integer*    |`Creator of board`             |Required \| auto-populated            |
+|**thumbnail**     |*BLOB*       |`User provided thumbnail`      |Optional                              |
+|**is_public**     |*boolean*    |`Whether or not is public`     |Required \| default value is *`false`*|
+|**saved_on**      |*timestamp*  |`Date saved`                   |Required \| auto-populated            |
+|**updated_on**    |*timestamp*  |`Last update`                  |Required \| auto-populated            |
 ___
 
 ### Create a Board
@@ -151,10 +151,10 @@ ___
 ###### Parameters
 |Name              |Type         |Description                    |Conditions                            | 
 |:----------------:|:-----------:|:-----------------------------:|:-------------------------------------|
-|**name**          |*string*     |`Name of Board`                |`Required`                            |
-|**description**   |*string*     |`Board's  description`         |`Optional`                            |
-|**userId**        |*integer*    |`Creator of board`             |`Required | Included in jwt`          |
-|**thumbnail**     |*BLOB*       |`User provided thumbnail`      |`Optional | Default `*`board.jpg`*    |
+|**name**          |*string*     |`Name of Board`                |Required                              |
+|**description**   |*string*     |`Board's  description`         |Optional                              |
+|**userId**        |*integer*    |`Creator of board`             |Required \| Included in jwt           |
+|**thumbnail**     |*BLOB*       |`User provided thumbnail`      |Optional \| Default  *`'board.jpg'`*  |
 ##### In `HEADERS` sent as *JSON* :
 ```js
 	{
@@ -178,7 +178,7 @@ ___
 ###### Parameters
 |Name              |Type         |Description                    |Conditions                            | 
 |:----------------:|:-----------:|:-----------------------------:|:-------------------------------------|
-|**userId**        |*integer*    |`whose boards to retrieve`     |`Required | Included in jwt`          |
+|**userId**        |*integer*    |`whose boards to retrieve`     |Required \| Included in jwt           |
 ##### In `HEADERS` sent as *JSON* :
 ```js
 	{
@@ -194,8 +194,8 @@ ___
 ###### Parameters
 |Name              |Type         |Description                    |Conditions                            | 
 |:----------------:|:-----------:|:-----------------------------:|:-------------------------------------|
-|**userId**        |*integer*    |`Creator of board`             |`Required | Included in jwt`          |
-|**boardId**       |*integer*    |`Board ID`                     |`Required `                           |
+|**userId**        |*integer*    |`Creator of board`             |Required \| Included in jwt           |
+|**boardId**       |*integer*    |`Board ID`                     |Required                              |
 
 
 ##### In `HEADERS` sent as *JSON* :
@@ -214,8 +214,8 @@ ___
 ###### Parameters
 |Name              |Type         |Description                    |Conditions                            | 
 |:----------------:|:-----------:|:-----------------------------:|:-------------------------------------|
-|**userId**        |*integer*    |`Creator of board`             |`Required | Included in jwt`          |
-|**boardId**       |*integer*    |`Board ID`                     |`Required `                           |
+|**userId**        |*integer*    |`Creator of board`             |Required \| Included in jwt           |
+|**boardId**       |*integer*    |`Board ID`                     |Required                              |
 
 
 ##### In `HEADERS` sent as *JSON* :
@@ -234,8 +234,8 @@ ___
 ###### Parameters
 |Name              |Type         |Description                    |Conditions                            | 
 |:----------------:|:-----------:|:-----------------------------:|:-------------------------------------|
-|**userId**        |*integer*    |`Users looking a board`        |`Required | Included in jwt`          |
-|**boardId**       |*integer*    |`Board ID`                     |`Required `                           |
+|**userId**        |*integer*    |`Users looking a board`        |Required \| Included in jwt           |
+|**boardId**       |*integer*    |`Board ID`                     |Required                              |
 
 
 ##### In `HEADERS` sent as *JSON* :
@@ -254,13 +254,13 @@ ___
 ###### Parameters
 |Name              |Type         |Description                    |Conditions                            | 
 |:----------------:|:-----------:|:-----------------------------:|:-------------------------------------|
-|**userId**        |*integer*    |`Creator of board`             |`Required | Included in jwt`          |
-|**name**          |*string*     |`Name of Board`                |`Optional`                            |
-|**description**   |*string*     |`Board's  description`         |`Optional`                            |
-|**is_public**     |*boolean*    |`Whether or not is public`     |`Optional`                            |
-|**thumbnail**     |*BLOB*       |`User provided thumbnail`      |`Optional`                            |
-|**rm_article**    |*integer*    |`Article id to be removed`     |`Optional`                            |
-|**add_article**   |*integer*    |`Article id to be added`       |`Optional`                            |
+|**userId**        |*integer*    |`Creator of board`             |Required \| Included in jwt           |
+|**name**          |*string*     |`Name of Board`                |Optional                              |
+|**description**   |*string*     |`Board's  description`         |Optional                              |
+|**is_public**     |*boolean*    |`Whether or not is public`     |Optional                              |
+|**thumbnail**     |*BLOB*       |`User provided thumbnail`      |Optional                              |
+|**rm_article**    |*integer*    |`Article id to be removed`     |Optional                              |
+|**add_article**   |*integer*    |`Article id to be added`       |Optional                              |
 ##### In `HEADERS` sent as *JSON* :
 ```js
 	{
@@ -286,8 +286,8 @@ ___
 ###### Parameters
 |Name              |Type         |Description                    |Conditions                            | 
 |:----------------:|:-----------:|:-----------------------------:|:-------------------------------------|
-|**userId**        |*integer*    |`User id`                      |`Required | Included in jwt`          |
-|**board_id**      |*integer*    |`Board's ID`                   |`required`                            |
+|**userId**        |*integer*    |`User id`                      |Required \| Included in jwt           |
+|**board_id**      |*integer*    |`Board's ID`                   |Required                              |
 ##### In `HEADERS` sent as *JSON* :
 ```js
 	{
@@ -305,15 +305,15 @@ ___
 ###### The Article Object
 |Name             |Type            |Description            |Conditions                            |
 |:----------------|:--------------:| :--------------------:|:-------------------------------------|
-|**id**           |*integer*       |`Article id`           |`Required | Unique | Auto-populated`  |
-|**url**          |*string*        |`link to article`      |`Required`                            |
-|**thumbnail**    |*integer*       |`Id in params`         |`Required | auto-populated`           |
-|**title**        |*string*        |`title of the article` |`Required | auto-populated`           |
-|**author**       |*string*        |`author of the article`|`Required | auto-populated`           |
-|**host**         |*string*        |`where is it hosted`   |`Required | auto-populated`           |
-|**published_on** |*timestamp*     |`Date of publication`  |`Required | auto-populated`           |
-|**saved_on**     |*timestamp*     |`Date saved`           |`Required | auto-populated`           |
-|**updated_on**   |*timestamp*     |`Last update`          |`Required | auto-populated`           |
+|**id**           |*integer*       |`Article id`           |Required \| Unique \| Auto-populated  |
+|**url**          |*string*        |`link to article`      |Required                              |
+|**thumbnail**    |*integer*       |`Id in params`         |Required \| auto-populated            |
+|**title**        |*string*        |`title of the article` |Required \| auto-populated            |
+|**author**       |*string*        |`author of the article`|Required \| auto-populated            |
+|**host**         |*string*        |`where is it hosted`   |Required \| auto-populated            |
+|**published_on** |*timestamp*     |`Date of publication`  |Required \| auto-populated            |
+|**saved_on**     |*timestamp*     |`Date saved`           |Required \| auto-populated            |
+|**updated_on**   |*timestamp*     |`Last update`          |Required \| auto-populated            |
 
 
 ___
@@ -323,9 +323,9 @@ ___
 ###### Parameters
 |Name              |Type         |Description                    |Conditions                            | 
 |:----------------:|:-----------:|:-----------------------------:|:-------------------------------------|
-|**userId**        |*integer*    |`User id`                      |`Required | Included in jwt`          |
-|**board_id**      |*integer*    |`Board's ID`                   |`required`                            |
-|**url**           |*string*     |`link to article`              |`Required`                            |
+|**userId**        |*integer*    |`User id`                      |Required \| Included in jwt           |
+|**board_id**      |*integer*    |`Board's ID`                   |Required                              |
+|**url**           |*string*     |`link to article`              |Required                              |
 ##### In `HEADERS` sent as *JSON* :
 ```js
 	{
@@ -348,8 +348,8 @@ ___
 ###### Parameters
 |Name              |Type         |Description                    |Conditions                            | 
 |:----------------:|:-----------:|:-----------------------------:|:-------------------------------------|
-|**userId**        |*integer*    |`User id`                      |`Required | Included in jwt`          |
-|**board_id**      |*integer*    |`Board's ID`                   |`required`                            |
+|**userId**        |*integer*    |`User id`                      |Required \| Included in jwt           |
+|**board_id**      |*integer*    |`Board's ID`                   |Required                              |
 ##### In `HEADERS` sent as *JSON* :
 ```js
 	{
@@ -372,9 +372,9 @@ ___
 ###### Parameters
 |Name              |Type         |Description                    |Conditions                            | 
 |:----------------:|:-----------:|:-----------------------------:|:-------------------------------------|
-|**userId**        |*integer*    |`User id`                      |`Required | Included in jwt`          |
-|**board_id**      |*integer*    |`Board's ID`                   |`required`                            |
-|**article_id**    |*integer*    |`Article specific ID`          |`required`                            |
+|**userId**        |*integer*    |`User id`                      |Required \| Included in jwt           |
+|**board_id**      |*integer*    |`Board's ID`                   |Required                              |
+|**article_id**    |*integer*    |`Article specific ID`          |Required                              |
 
 ##### In `HEADERS` sent as *JSON* :
 ```js
@@ -398,15 +398,15 @@ ___
 ###### Parameters
 |Name              |Type         |Description                    |Conditions                            | 
 |:----------------:|:-----------:|:-----------------------------:|:-------------------------------------|
-|**userId**        |*integer*    |`User id`                      |`Required | Included in jwt`          |
-|**board_id**      |*integer*    |`Board's ID`                   |`required`                            |
-|**article_id**    |*integer*    |`Article specific ID`          |`required`                            |
-|**url**           |*string*     |`link to article`              |`Required`                            |
-|**thumbnail**     |*integer*    |`Id in params`                 |`Required | auto-populated`           |
-|**title**         |*string*     |`title of the article`         |`Required | auto-populated`           |
-|**author**        |*string*     |`author of the article`        |`Required | auto-populated`           |
-|**host**          |*string*     |`where is it hosted`           |`Required | auto-populated`           |
-|**published_on**  |*timestamp*  |`Date of publication`          |`Required | auto-populated`           |
+|**userId**        |*integer*    |`User id`                      |Required \| Included in jwt           |
+|**board_id**      |*integer*    |`Board's ID`                   |Required                              |
+|**article_id**    |*integer*    |`Article specific ID`          |Required                              |
+|**url**           |*string*     |`link to article`              |Required                              |
+|**thumbnail**     |*integer*    |`Id in params`                 |Required \| auto-populated            |
+|**title**         |*string*     |`title of the article`         |Required \| auto-populated            |
+|**author**        |*string*     |`author of the article`        |Required \| auto-populated            |
+|**host**          |*string*     |`where is it hosted`           |Required \| auto-populated            |
+|**published_on**  |*timestamp*  |`Date of publication`          |Required \| auto-populated            |
 
 
 ##### In `HEADERS` sent as *JSON* :
@@ -437,9 +437,9 @@ ___
 ###### Parameters
 |Name              |Type         |Description                    |Conditions                            | 
 |:----------------:|:-----------:|:-----------------------------:|:-------------------------------------|
-|**userId**        |*integer*    |`User id`                      |`Required | Included in jwt`          |
-|**board_id**      |*integer*    |`Board's ID`                   |`required`                            |
-|**article_id**    |*integer*    |`Article specific ID`          |`required`                            |
+|**userId**        |*integer*    |`User id`                      |Required \| Included in jwt           |
+|**board_id**      |*integer*    |`Board's ID`                   |Required                              |
+|**article_id**    |*integer*    |`Article specific ID`          |Required                              |
 
 ##### In `HEADERS` sent as *JSON* :
 ```js
