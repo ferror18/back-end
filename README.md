@@ -9,16 +9,16 @@
 ## USERS
 ``` 
 Users require a username and password to be created.
-You can use this username and password later to log in.
+You can use this username and password to login later on.
 Username MUST BE unique.
-Password CAN NOT bet same as User.
+Password CAN NOT be the same as username.
 ```
 ###### The User Object
 |Name         |Type         |Description            |Conditions                           | 
 |:-----------:|:-----------:| :--------------------:|:------------------------------------|
 |**username** |*string*     |`Choosen username`     |`Required | Uninque`                 |
 |**password** |*string*     |`Choosen password`     |`Required | NOT same as user`        |
-|**id**       |*integer*    |`Id in params`         |`Required | Unique`                  |
+|**user_id**  |*integer*    |`Id in params`         |`Required | Unique`                  |
 |**picture**  |*BLOB*       |`User provided picture`|`Optional`                           |
 ___
 
