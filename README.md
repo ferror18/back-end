@@ -37,7 +37,6 @@ ___
 	{
     	"username": "myUsername",
         "password": "myPassword",
-        "picture": "Only if needed"
 	}
 ```
 #### *SUCCESS*
