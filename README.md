@@ -16,7 +16,7 @@ Password CAN NOT be the same as username.
 ###### The User Object
 |Name         |Type         |Description            |Conditions                           | 
 |:-----------:|:-----------:| :--------------------:|:------------------------------------|
-|**username** |*string*     |`Choosen username`     |`Required | Uninque`                 |
+|**username** |*string*     |`Choosen username`     |`Required  and Uninque`                 |
 |**password** |*string*     |`Choosen password`     |`Required | NOT same as user`        |
 |**user_id**  |*integer*    |`Id in params`         |`Required | Unique`                  |
 |**picture**  |*BLOB*       |`User provided picture`|`Optional`                           |
@@ -29,7 +29,7 @@ ___
 ###### Parameters
 |Name         |Type         |Description            |Conditions                           | 
 |:-----------:|:-----------:| :--------------------:|:------------------------------------|
-|**username** |*string*     |`Choosen username`     |`Required | Uninque`                 |
+|**username** |*string*     |`Choosen username`     |`Required  and Uninque`                 |
 |**password** |*string*     |`Choosen password`     |`Required | NOT same as user`        |
 |**picture**  |*BLOB*       |`User provided picture`|`Optional`                           |
 ##### In `BODY` sent as *JSON* :
@@ -50,7 +50,7 @@ ___
 ###### Parameters
 |Name         |Type         |Description            |Conditions                           | 
 |:-----------:|:-----------:| :--------------------:|:------------------------------------|
-|**username** |*string*     |`Choosen username`     |`Required | Uninque`                 |
+|**username** |*string*     |`Choosen username`     |`Required  and Uninque`                 |
 |**password** |*string*     |`Choosen password`     |`Required | NOT same as user`        |
 ##### In `BODY` sent as *JSON* :
 ```js
@@ -68,7 +68,7 @@ ___
 ###### Parameters
 |Name         |Type         |Description            |Conditions                           | 
 |:-----------:|:-----------:| :--------------------:|:------------------------------------|
-|**username** |*string*     |`Choosen username`     |`Required | Uninque`                 |
+|**username** |*string*     |`Choosen username`     |`Required  and Uninque`                 |
 |**password** |*string*     |`Choosen password`     |`Required`                           |
 |**id**       |*integer*    |`Id in params`         |`Required`                           |
 ##### In `HEADERS` sent as *JSON* :
