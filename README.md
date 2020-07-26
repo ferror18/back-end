@@ -19,7 +19,7 @@ Password CAN NOT be the same as username.
 |**username** |*string*     |`Choosen username`     |Required  \| Uninque                 |
 |**password** |*string*     |`Choosen password`     |Required \| NOT same as user         |
 |**user_id**  |*integer*    |`Id in params`         |Required \| Unique                   |
-|**picture**  |*BLOB*       |`User provided picture`|Optional                             |
+|**picture**  |*BLOB*       |`User provided picture`|Optional \| default *`user.jpg`*     |
 ___
 
 
@@ -31,7 +31,7 @@ ___
 |:-----------:|:-----------:| :--------------------:|:------------------------------------|
 |**username** |*string*     |`Choosen username`     |Required  \| Uninque                 |
 |**password** |*string*     |`Choosen password`     |Required \| NOT same as user         |
-|**picture**  |*BLOB*       |`User provided picture`|Optional                             |
+|**picture**  |*BLOB*       |`User provided picture`|Optional \| default *`user.jpg`*     |
 ##### In `BODY` sent as *JSON* :
 ```js
 	{
@@ -140,7 +140,7 @@ You can NOT share or delete default board.
 |**name**          |*string*     |`Name of Board`                |Required                              |
 |**description**   |*string*     |`Board's  description`         |Optional                              |
 |**owner**         |*integer*    |`Creator of board`             |Required \| auto-populated            |
-|**thumbnail**     |*BLOB*       |`User provided thumbnail`      |Optional                              |
+|**thumbnail**     |*BLOB*       |`User provided thumbnail`      |Optional \| default *`board.jpg`*     |
 |**is_public**     |*boolean*    |`Whether or not is public`     |Required \| default value is *`false`*|
 |**saved_on**      |*timestamp*  |`Date saved`                   |Required \| auto-populated            |
 |**updated_on**    |*timestamp*  |`Last update`                  |Required \| auto-populated            |
@@ -258,7 +258,7 @@ ___
 |**name**          |*string*     |`Name of Board`                |Optional                              |
 |**description**   |*string*     |`Board's  description`         |Optional                              |
 |**is_public**     |*boolean*    |`Whether or not is public`     |Optional                              |
-|**thumbnail**     |*BLOB*       |`User provided thumbnail`      |Optional                              |
+|**thumbnail**     |*BLOB*       |`User provided thumbnail`      |Optional \| default *`board.jpg`*     |
 |**rm_article**    |*integer*    |`Article id to be removed`     |Optional                              |
 |**add_article**   |*integer*    |`Article id to be added`       |Optional                              |
 ##### In `HEADERS` sent as *JSON* :
