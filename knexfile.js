@@ -1,42 +1,47 @@
 const pgConnection = process.env.DATABASE_URL || "postgresql://postgres@localhost/hobbits";
-const pgSearchPathZero = process.env.SEARCH_PATH_ZERO || 'knex';
+
 module.exports = {
-  development: {
-    client: 'pg',
-    connection: process.env.PG_CONNECTION_STRING,
-    searchPath: [ pgSearchPathZero, 'public'],
-    migrations: {
-        directory: "./database/migrations",
+    development: {
+        client: "sqlite3",
+        connection: {
+            filename: "./data/pintereachdb.db3",
+        },
+        useNullAsDefault: true,
+        migrations: {
+            directory: "./data/migrations",
+        },
+        seeds: {
+            directory: "./data/seeds",
+        },
     },
-    seeds: {
-        directory: "./database/seeds",
-    }
-  },
-  testing: {
-    client: 'pg',
-    connection: process.env.PG_CONNECTION_STRING,
-    searchPath: [ pgSearchPathZero, 'public'],
-    migrations: {
-        directory: "./database/migrations",
+
+    testing: {
+        client: "sqlite3",
+        connection: {
+            filename: "./data/test_pintereachdb.db3",
+        },
+        useNullAsDefault: true,
+        migrations: {
+            directory: "./data/migrations",
+        },
+        seeds: {
+            directory: "./data/seeds",
+        },
     },
-    seeds: {
-        directory: "./database/seeds",
-    }
-  },
-  // for Heroku
+
+    // for Heroku
     production: {
         client: "pg",
         connection: pgConnection,
-        searchPath: [ pgSearchPathZero, 'public'],
         pool: {
             min: 2,
             max: 10,
         },
         migrations: {
-            directory: "./database/migrations",
+            directory: "./data/migrations",
         },
         seeds: {
-            directory: "./database/seeds",
-        }
+            directory: "./data/seeds",
+        },
     },
 };

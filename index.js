@@ -9,6 +9,7 @@ const server = express();
 const usersRouter = require('./users/usersRouter.js');
 const boardsRouter = require('./boards/boardsRouter.js');
 const articlesRouter = require('./articles/articlesRouter.js');
+const { PORT } = require('./globalConstants.js');
 
 //middleware
  
@@ -21,7 +22,6 @@ server.use('/boards', boardsRouter);
 server.use('/articles', articlesRouter);
 server.get('/', (req, res) => res.send('Server Running'))
 //network
-const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => {
   console.log(`\n=== Server listening on port ${PORT} ===\n`);
 });
