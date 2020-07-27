@@ -1,4 +1,4 @@
-# Pintereach API Version 0.0.1 - Link - ``` https://pintereachapi.herokuapp.com/ ```
+# Pintereach API Version 0.0.2 - Link - ``` https://pintereachapi.herokuapp.com/ ```
 #### Pintereach is an app that aims to be the 'Pintrest of research' current features include:
 * ##### User accounts
 * ##### Saving articles
