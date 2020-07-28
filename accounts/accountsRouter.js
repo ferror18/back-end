@@ -3,8 +3,8 @@ const jwt = require('jsonwebtoken')
 
 const router = require("express").Router();
 
-const Users = require("./usersModel.js");
-const { isValid } = require("./usersServices.js");
+const Users = require("./accountsModel.js");
+const { isValid } = require("./accountsServices.js");
 const { SECRET } = require("../globalConstants.js");
 
 router.post("/register", (req, res) => {
@@ -62,7 +62,7 @@ function makeJwt(user) {
         subject: user.id
     }
     const options = {
-        expiresIn: '1h'
+        expiresIn: '6h'
     }
     return jwt.sign(payload, SECRET, options)
 }

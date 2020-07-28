@@ -4,8 +4,8 @@
   "description": "* ##### User accounts * ##### Saving articles * ##### Creating Boards",
   "main": "index.js",
   "scripts": {
-    "server": "cross-env DB_ENV=development nodemon --trace-sync-io index.js",
-    "test": "cross-env DB_ENV=testing jest --watch",
+    "server": "cross-env DB_ENV=development nodemon index.js",
+    "test": "cross-env DB_ENV=testing DATABASE_URL=postgresql://postgres@localhost/pintereach_testing jest --watchAll",
     "start": "node index.js"
   },
   "repository": {
@@ -33,6 +33,7 @@
     "helmet": "^3.23.3",
     "jsonwebtoken": "8.5.1",
     "knex": "0.21.2",
+    "knex-cleaner": "1.3.0",
     "pg": "8.3.0",
     "sqlite3": "5.0.0"
   }

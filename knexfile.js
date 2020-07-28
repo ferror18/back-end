@@ -1,12 +1,9 @@
-const pgConnection = process.env.DATABASE_URL || "postgresql://postgres@localhost/hobbits";
+const pgConnection = process.env.DATABASE_URL || "postgresql://postgres:password@localhost/pintereach_development";
 
 module.exports = {
     development: {
-        client: "sqlite3",
-        connection: {
-            filename: "./data/pintereachdb.db3",
-        },
-        useNullAsDefault: true,
+        client: "pg",
+        connection: pgConnection,
         migrations: {
             directory: "./data/migrations",
         },
@@ -16,11 +13,8 @@ module.exports = {
     },
 
     testing: {
-        client: "sqlite3",
-        connection: {
-            filename: "./data/test_pintereachdb.db3",
-        },
-        useNullAsDefault: true,
+        client: "pg",
+        connection: "postgresql://postgres:password@localhost/pintereach_testing",
         migrations: {
             directory: "./data/migrations",
         },
