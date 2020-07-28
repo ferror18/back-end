@@ -2,15 +2,17 @@ const Boards = require('./boardsModel.js');
 const Accounts = require('../accounts/accountsModel.js');
 const { testAccounts } = require('../accounts/accountsConstants.js');
 const db = require("../data/dbConfig.js");
+const { kcOptions, resetDB } = require('../globalConstants.js');
+const knexCleaner = require('knex-cleaner');
 
-afterAll(async () => {
-    await db("accounts").truncate();
-    await db("boards").truncate();
-});
+
 
 describe("Boards model", () => {
+    afterAll(async () => {
+        await resetDB();
+     });
     it("New user should get a default board", async () => {
-        await db("accounts").truncate();
+        await resetDB();
         await Accounts.add(testAccounts.user);
         console.log(await Boards.findAll());
 

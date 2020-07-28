@@ -13,6 +13,8 @@ exports.up = function(knex) {
     })
     .createTable('articles', tbl => {
         tbl.increments();
+        tbl.integer("board_id").notNullable().unsigned()
+        .references("boards.id").onDelete('CASCADE').onUpdate('CASCADE');
         tbl.string('url', 1024);
         tbl.string('title', 256);
         tbl.string('host', 128);
@@ -26,8 +28,8 @@ exports.up = function(knex) {
   
   exports.down = function(knex) {
     return knex.schema
-    .dropTableIfExists('boards')
     .dropTableIfExists('articles')
+    .dropTableIfExists('boards')
     .table("accounts", tbl => {
         tbl.dropColumns("created_at", "updated_at");
 

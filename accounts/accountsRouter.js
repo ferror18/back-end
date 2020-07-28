@@ -62,7 +62,7 @@ function makeJwt(user) {
         subject: user.id
     }
     const options = {
-        expiresIn: '1h'
+        expiresIn: '6h'
     }
     return jwt.sign(payload, SECRET, options)
 }

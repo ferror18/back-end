@@ -9,16 +9,20 @@ testing the insert manually.
 const db = require("../data/dbConfig.js");
 const Accounts = require("./accountsModel.js");
 const { testAccounts } = require("./accountsConstants.js");
+const { kcOptions, resetDB } = require('../globalConstants.js');
+const knexCleaner = require('knex-cleaner');
 
 
-afterAll(async () => {
-    await db("accounts").truncate();
-});
+
+
 
 describe("Accounts model", function () {
+    afterAll(async () => {
+        await resetDB();
+    });
     describe("add()", function () {
         beforeEach( async () => {
-            await db("accounts").truncate();
+            await resetDB();
             await Accounts.add(testAccounts.user);
             await Accounts.add(testAccounts.user2);
         });
@@ -36,14 +40,12 @@ describe("Accounts model", function () {
         })
 
     });
-    describe("getAll()", () => {
-        beforeEach( async () => {
-            await db("accounts").truncate();
+    describe("findAll()", () => {
+        it("should get same number of entries", async () => {
+            await resetDB();
             await Object.values(testAccounts).forEach(async element => {
             await Accounts.add(element);
             });
-        });
-        it("should get same number of entries", async () => {
             const myAccounts = await db("accounts");
             const findAllAccounts = await Accounts.findAll();
 
@@ -51,15 +53,14 @@ describe("Accounts model", function () {
         })
     });
     describe("findBy(id)", () => {
-        beforeEach( async () => {
-            await db("accounts").truncate();
+        it("should use id to grab one correct user", async () => {
+            await resetDB();
             await Object.values(testAccounts).forEach(async element => {
             await Accounts.add(element);
             });
-        });
-        it("should use id to grab one correct user", async () => {
-            const userFromDb = await db("accounts").where({ id: 123456789 }).first();
-            const userFromModel = await Accounts.findById(123456789);
+            const userFromDb = await db("accounts").where({ username: 'sam' }.first());
+            const userFromModel = await Accounts.findById(userFromDb.id);
+            console.log(userFromDb, userFromModel);
             expect(userFromDb.length).toBe(userFromModel.length);
             expect(userFromModel.id).toBe(userFromModel.id);
             expect(userFromModel.username).toBe(userFromModel.username);
@@ -67,13 +68,11 @@ describe("Accounts model", function () {
         })
     });
     describe("findBy(filter)", () => {
-        beforeEach( async () => {
-            await db("accounts").truncate();
+        it("should find by filter username", async () => {
+            await resetDB();
             await Object.values(testAccounts).forEach(async element => {
             await Accounts.add(element);
             });
-        });
-        it("should find by filter username", async () => {
             const userFromDb = await db("accounts").where({username: 'flammingPuddle'}).orderBy("id");
             const userFromModel = await Accounts.findBy({username: 'flammingPuddle'});
             expect(userFromDb.length).toBe(userFromModel.length);
@@ -82,4 +81,5 @@ describe("Accounts model", function () {
             expect(userFromModel.password).toBe(userFromModel.password);
         })
     })
+
 });

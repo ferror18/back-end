@@ -163,8 +163,9 @@ ___
 ##### In `BODY` sent as *JSON* :
 ```js
 	{
-		"name": "Awsome Board Name"
-        "description": "my Description"
+		"name": "Awsome Board Name",
+		"description": "my Description",
+		"is_public": true //Include Only if creating a public board
 	}
 ```
 #### *SUCCESS*

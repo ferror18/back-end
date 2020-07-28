@@ -4,7 +4,9 @@ module.exports = {
   findAll,
   findBy,
   findById,
-  generateDefaultBoard
+  generateDefaultBoard,
+  remove,
+  update
 };
 
 async function generateDefaultBoard(user) {
@@ -14,25 +16,39 @@ async function generateDefaultBoard(user) {
         is_default: true
     })
 }
-async function findAll() {
+async function findAll(id) {
   return await db("boards").select("*").orderBy("created_at");
 }
 
 async function findBy(filter) {
-  return await db("accounts").where(filter).orderBy("id");
+  return await db("boards").where(filter).orderBy("created_at");
 }
 
-async function add(user) {
+async function add(board) {
   try {
-    const [id] = await db("accounts").insert(user, "id");
-    const newUser =  await findById(id);
-    await generateDefaultBoard(newUser);
-    return newUser
+    const [id] = await db("boards").insert(board, "id");
+    return await findById(id);
   } catch (error) {
     throw error;
   }
 }
 
 async function findById(id) {
-  return await db("accounts").where({ id }).first();
+  return await db("boards").where({ id }).first();
+}
+
+async function update(board) {
+  Object.keys(board[0]).forEach(async item => {
+    await db('boards').where('id', '=', board[1]).update({[item]: board[0][item]})
+  })
+  // await db('boards')
+  // .where({ id: board[1] })
+  // .update(board[0])
+  return await findById(board[1])
+}
+
+async function remove(board_id) {
+  return db('boards')
+  .where({ id: board_id })
+  .del()
 }
