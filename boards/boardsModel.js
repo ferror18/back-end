@@ -16,7 +16,7 @@ async function generateDefaultBoard(user) {
         is_default: true
     })
 }
-async function findAll(id) {
+async function findAll() {
   return await db("boards").select("*").orderBy("created_at");
 }
 
