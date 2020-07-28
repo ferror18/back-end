@@ -6,7 +6,7 @@ const helmet = require('helmet');
 const server = express();
 
 //routers
-const usersRouter = require('./users/usersRouter.js');
+const accountsRouter = require('./accounts/accountsRouter.js');
 const boardsRouter = require('./boards/boardsRouter.js');
 const articlesRouter = require('./articles/articlesRouter.js');
 const { PORT } = require('./globalConstants.js');
@@ -17,7 +17,7 @@ server.use(helmet());
 server.use(cors());
 server.use(express.json());
 
-server.use(usersRouter);
+server.use(accountsRouter);
 server.use('/boards', boardsRouter);
 server.use('/articles', articlesRouter);
 server.get('/', (req, res) => res.send('Server Running'))

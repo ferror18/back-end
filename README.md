@@ -19,7 +19,7 @@ Password CAN NOT be the same as username.
 |**username** |*string*     |`Choosen username`     |Required  \| Uninque                 |
 |**password** |*string*     |`Choosen password`     |Required \| NOT same as user         |
 |**user_id**  |*integer*    |`Id in params`         |Required \| Unique                   |
-|**picture**  |*BLOB*       |`User provided picture`|Optional \| default *`user.jpg`*     |
+|**picture**  |*Binary*     |`User provided picture`|Optional \| default *`user.jpg`*     |
 ___
 
 
@@ -31,7 +31,7 @@ ___
 |:-----------:|:-----------:| :--------------------:|:------------------------------------|
 |**username** |*string*     |`Choosen username`     |Required  \| Uninque                 |
 |**password** |*string*     |`Choosen password`     |Required \| NOT same as user         |
-|**picture**  |*BLOB*       |`User provided picture`|Optional \| default *`user.jpg`*     |
+|**picture**  |*Binary*     |`User provided picture`|Optional \| default *`user.jpg`*     |
 ##### In `BODY` sent as *JSON* :
 ```js
 	{
@@ -96,7 +96,7 @@ ___
 |**username**      |*string*     |`Choosen username`     |Only if Updated                      |
 |**password**      |*string*     |`Choosen password`     |Only if Updated                      |
 |**id**            |*integer*    |`Id in params`         |Required                             |
-|**picture**       |*BLOB*       |`User provided picture`|Optional                             |
+|**picture**       |*Binary*     |`User provided picture`|Optional                             |
 |**oldPassword**   |*string*     |`Current password `    |Required                             |
 ##### In `HEADERS` sent as *JSON* :
 ```js
@@ -135,11 +135,11 @@ You can NOT share or delete default board.
 |Name              |Type         |Description                    |Conditions                            | 
 |:----------------:|:-----------:|:-----------------------------:|:-------------------------------------|
 |**id**            |*integer*    |`Board id`                     |Required \| Unique \| Auto-populated  |
-|**is_default**    |*boolean*    |`Whether or not is default`    |Required \| Can't be changed          |
 |**name**          |*string*     |`Name of Board`                |Required                              |
 |**description**   |*string*     |`Board's  description`         |Optional                              |
 |**owner**         |*integer*    |`Creator of board`             |Required \| auto-populated            |
-|**thumbnail**     |*BLOB*       |`User provided thumbnail`      |Optional \| default *`board.jpg`*     |
+|**thumbnail**     |*Binary*     |`User provided thumbnail`      |Optional \| default *`board.jpg`*     |
+|**is_default**    |*boolean*    |`Whether or not is default`    |Required \| Can't be changed          |
 |**is_public**     |*boolean*    |`Whether or not is public`     |Required \| default value is *`false`*|
 |**saved_on**      |*timestamp*  |`Date saved`                   |Required \| auto-populated            |
 |**updated_on**    |*timestamp*  |`Last update`                  |Required \| auto-populated            |
@@ -153,7 +153,7 @@ ___
 |**name**          |*string*     |`Name of Board`                |Required                              |
 |**description**   |*string*     |`Board's  description`         |Optional                              |
 |**userId**        |*integer*    |`Creator of board`             |Required \| Included in jwt           |
-|**thumbnail**     |*BLOB*       |`User provided thumbnail`      |Optional \| Default  *`'board.jpg'`*  |
+|**thumbnail**     |*Binary*     |`User provided thumbnail`      |Optional \| Default  *`'board.jpg'`*  |
 ##### In `HEADERS` sent as *JSON* :
 ```js
 	{
@@ -256,10 +256,8 @@ ___
 |**userId**        |*integer*    |`Creator of board`             |Required \| Included in jwt           |
 |**name**          |*string*     |`Name of Board`                |Optional                              |
 |**description**   |*string*     |`Board's  description`         |Optional                              |
+|**thumbnail**     |*Binary*     |`User provided thumbnail`      |Optional \| default *`board.jpg`*     |
 |**is_public**     |*boolean*    |`Whether or not is public`     |Optional                              |
-|**thumbnail**     |*BLOB*       |`User provided thumbnail`      |Optional \| default *`board.jpg`*     |
-|**rm_article**    |*integer*    |`Article id to be removed`     |Optional                              |
-|**add_article**   |*integer*    |`Article id to be added`       |Optional                              |
 ##### In `HEADERS` sent as *JSON* :
 ```js
 	{
@@ -272,9 +270,7 @@ ___
 	{
 		"name": "Awsome Board Name", //Include Only if updating this field
         "description": "my Description", //Include Only if updating this field
-        "is_public": "true", //Include Only if updating this field
-        "rm_article": 1, //Include Only if updating this field
-        "add_article": 1, //Include Only if updating this field
+        "is_public": "true" //Include Only if updating this field
 	}
 ```
 #### *SUCCESS*
@@ -306,10 +302,10 @@ ___
 |:----------------|:--------------:| :--------------------:|:-------------------------------------|
 |**id**           |*integer*       |`Article id`           |Required \| Unique \| Auto-populated  |
 |**url**          |*string*        |`link to article`      |Required                              |
-|**thumbnail**    |*integer*       |`Id in params`         |Required \| auto-populated            |
 |**title**        |*string*        |`title of the article` |Required \| auto-populated            |
 |**author**       |*string*        |`author of the article`|Required \| auto-populated            |
 |**host**         |*string*        |`where is it hosted`   |Required \| auto-populated            |
+|**thumbnail**    |*integer*       |`Id in params`         |Required \| auto-populated            |
 |**published_on** |*timestamp*     |`Date of publication`  |Required \| auto-populated            |
 |**saved_on**     |*timestamp*     |`Date saved`           |Required \| auto-populated            |
 |**updated_on**   |*timestamp*     |`Last update`          |Required \| auto-populated            |

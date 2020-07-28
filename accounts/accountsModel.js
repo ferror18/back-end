@@ -1,21 +1,15 @@
-const db = require('../data/dbConfig.js')
+const db = require("../data/dbConfig.js");
+const { generateDefaultBoard } = require("../boards/boardsModel.js");
+
 module.exports = {
   add,
   findAll,
   findBy,
   findById,
-  generateDefaultBoard
 };
 
-async function generateDefaultBoard(user) {
-    await db("boards").insert({
-        owner: user.id,
-        name: user.username,
-        is_default: true
-    })
-}
 async function findAll() {
-  return await db("boards").select("*").orderBy("created_at");
+  return await db("accounts").select("id", "username").orderBy("id");
 }
 
 async function findBy(filter) {
