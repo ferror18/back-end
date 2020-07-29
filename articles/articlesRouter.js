@@ -9,16 +9,14 @@ router.post('/', async (req, res) => {
     res.status(200).json(newArticle)
 })
 
-router.get('/',  (req, res) => {
-    // const newArticle = await Articles.add(makeArticleFrom(req.body))
-    Articles.findAll(req.params.board_id)
-    .then(response => {
-        const owner = jwt.verify(req.headers.authorization, SECRET).subject;
-        console.log(response);
-        res.status(200).json(response)
-    })
-    .catch(error => res.send(error))
-})
+router.get('/',  async (req, res) => {
+   try {
+    const owner = jwt.verify(req.headers.authorization, SECRET).subject;
+    return await Articles.findAll( req.params.id );
+   } catch (error) {
+       res.send(error);
+   };
+});
 
 router.get('/:id', async (req, res) => {
     const owner = jwt.verify(req.headers.authorization, SECRET).subject;

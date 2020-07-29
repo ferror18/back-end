@@ -30,11 +30,15 @@ module.exports = {
     return await db("articles").where({ id }).first();
   }
   
-  async function update(article) {
-    Object.keys(article[0]).forEach( async item => {
-       await db('articles').where('id', '=', article[1]).update({[item]: article[0][item]})
-    })
-    return await findById(article[1])
+  async function update({ updates, id }) {
+    try {
+      for (const iterator of Object.keys(updates)) {
+        await db('articles').where('id', '=', id).update({[iterator]: updates[iterator]})
+      }
+      return await findById(id)
+    } catch (error) {
+      return error
+    }
   }
   
   async function remove(article_id) {

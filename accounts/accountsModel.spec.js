@@ -2,6 +2,7 @@ const db = require("../data/dbConfig.js");
 const Accounts = require("./accountsModel.js");
 const { testAccounts } = require("./accountsConstants.js");
 const { resetDB } = require('../globalConstants.js');
+const boardsModel = require("../boards/boardsModel.js");
 
 describe("Accounts model", function () {
     // afterAll(async () => {
