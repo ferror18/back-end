@@ -16,11 +16,11 @@ async function findBy(filter) {
   return await db("accounts").where(filter).orderBy("id");
 }
 
-async function add(user) {
+async function add(user, genDF) {
   try {
     const [id] = await db("accounts").insert(user, "id");
     const newUser =  await findById(id);
-    await generateDefaultBoard(newUser);
+    genDF?await generateDefaultBoard(newUser):'';
     return newUser
   } catch (error) {
     throw error;

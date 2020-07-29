@@ -19,7 +19,7 @@ router.post("/register", (req, res) => {
     credentials.password = hash;
 
     // save the user to the database
-    Users.add(credentials)
+    Users.add(credentials, true)
       .then(user => {
         res.status(201).json({ data: {
           "id": user.id,

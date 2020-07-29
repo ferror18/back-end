@@ -2,12 +2,11 @@ const Boards = require('./boardsModel.js');
 const Accounts = require('../accounts/accountsModel.js');
 const { testAccounts } = require('../accounts/accountsConstants.js');
 const db = require("../data/dbConfig.js");
-const { kcOptions, resetDB } = require('../globalConstants.js');
-const knexCleaner = require('knex-cleaner');
+const { resetDB } = require('../globalConstants.js');
 
 
 
-describe("Boards model", () => {
+describe.skip("Boards model", () => {
     afterAll(async () => {
         await resetDB();
      });
