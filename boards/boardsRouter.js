@@ -24,25 +24,35 @@ router.post('/', async (req, res) => {
 })
 
 router.get('/', async (req, res) => {
-    const owner = jwt.verify(req.headers.authorization, SECRET).subject;
-    res.status(200).json(await Boards.findBy({owner}))
-})
-
-router.get('/', async (req, res) => {
-    const owner = jwt.verify(req.headers.authorization, SECRET).subject;
-    res.status(200).json(await Boards.findBy({owner}))
+    try {
+        const owner = jwt.verify(req.headers.authorization, SECRET).subject;
+        res.status(200).json(await Boards.findBy({owner}))
+    } catch (error) {
+        res.send(error)
+    }
 })
 
 router.get('/:id', async (req, res) => {
-    const owner = jwt.verify(req.headers.authorization, SECRET).subject;
-    res.status(200).json(await Boards.findBy({owner: owner, id: req.params.id}))
+    try {
+        const owner = jwt.verify(req.headers.authorization, SECRET).subject;
+        res.status(200).json(await Boards.findBy({owner: owner, id: req.params.id}))
+    } catch (error) {
+        res.send(error)
+    }
 })
 
-
-
 router.patch('/:id', async (req, res) => {
-    const owner = jwt.verify(req.headers.authorization, SECRET).subject; 
-    res.status(200).json({message:'Success board has changed'})
+    try {
+        const owner = jwt.verify(req.headers.authorization, SECRET).subject;
+        const updatedBoard = await Boards.update({updates:req.body, id:req.params.id});
+        // await console.log('What im sending back ==>', updatedBoard);
+        await res.status(200).json({
+            message:`Success, board '${updatedBoard.name}' has been updated`,
+            board: updatedBoard
+        }) 
+    } catch (error) {
+        res.send(error)
+    }
 })
 
 router.delete('/:id', async (req, res) => {

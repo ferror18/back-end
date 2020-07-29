@@ -38,14 +38,15 @@ async function findById(id) {
   return await db("boards").where({ id }).first();
 }
 
-async function update(board) {
-  Object.keys(board[0]).forEach(async item => {
-    await db('boards').where('id', '=', board[1]).update({[item]: board[0][item]})
-  })
-  // await db('boards')
-  // .where({ id: board[1] })
-  // .update(board[0])
-  return await findById(board[1])
+async function update({ updates, id}) {
+  try {
+    for (const iterator of Object.keys(updates)) {
+      await db('boards').where('id', '=', id).update({[iterator]: updates[iterator]})
+    }
+    return await findById(id)
+  } catch (error) {
+    return error
+  }
 }
 
 async function remove(board_id) {
