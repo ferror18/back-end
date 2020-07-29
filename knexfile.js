@@ -1,6 +1,6 @@
 const pgConnection = process.env.DATABASE_URL || "postgresql://postgres@localhost/pintereach_development";
 
-const pgConnectionTesting = process.env.DATABASE_URL_T || "postgresql://postgres@localhost/pintereach_testing";
+const pgConnectionTesting = process.env.HEROKU_POSTGRESQL_CHARCOAL_URL || "postgresql://postgres@localhost/pintereach_testing";
 
 module.exports = {
     development: {
