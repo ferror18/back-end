@@ -20,7 +20,7 @@ server.use(express.json());
 server.use(accountsRouter);
 server.use('/boards', boardsRouter);
 server.use('/articles', articlesRouter);
-server.get('/', (req, res) => res.json({API: "AVAILABLE"}))
+server.get('/', (req, res) => res.send('<h1>API is available</h1>'));
 //network
 server.listen(PORT, () => {
   console.log(`\n=== Server listening on port ${PORT} ===\n`);

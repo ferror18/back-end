@@ -1,5 +1,7 @@
 const pgConnection = process.env.DATABASE_URL || "postgresql://postgres@localhost/pintereach_development";
 
+const pgConnectionTesting = process.env.DATABASE_URL_T || "postgresql://postgres@localhost/pintereach_testing";
+
 module.exports = {
     development: {
         client: "pg",
@@ -14,7 +16,7 @@ module.exports = {
 
     testing: {
         client: "pg",
-        connection: "postgresql://postgres@localhost/pintereach_testing",
+        connection: pgConnectionTesting,
         migrations: {
             directory: "./data/migrations",
         },
