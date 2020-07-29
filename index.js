@@ -19,7 +19,7 @@ server.use(express.json());
 
 server.use(accountsRouter);
 server.use('/boards', boardsRouter);
-server.use('/articles', articlesRouter);
+server.use('/articles', cors,  articlesRouter);
 server.get('/', (req, res) => res.send('<h1>API is available</h1>'));
 //network
 server.listen(PORT, () => {
