@@ -302,6 +302,7 @@ ___
 |Name             |Type            |Description            |Conditions                            |
 |:----------------|:--------------:| :--------------------:|:-------------------------------------|
 |**id**           |*integer*       |`Article id`           |Required \| Unique \| Auto-populated  |
+|**board_id**      |*integer*    |`Board's ID`                   |Required                              |
 |**url**          |*string*        |`link to article`      |Required                              |
 |**title**        |*string*        |`title of the article` |Required \| auto-populated            |
 |**author**       |*string*        |`author of the article`|Required \| auto-populated            |
@@ -443,12 +444,6 @@ ___
         "Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
         "article_id": 1  //Article ID
   	}
-```
-##### In `BODY` sent as *JSON* :
-```js
-	{
-        "board_id": 1
-	}
 ```
 #### *SUCCESS*
 #### *FAILURE*

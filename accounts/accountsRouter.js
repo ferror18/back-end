@@ -21,7 +21,12 @@ router.post("/register", (req, res) => {
     // save the user to the database
     Users.add(credentials)
       .then(user => {
-        res.status(201).json({ data: user });
+        res.status(201).json({ data: {
+          "id": user.id,
+          "username": user.username,
+          "created_at": user.created_at,
+          "updated_at": user.updated_at
+        } });
       })
       .catch(error => {
         res.status(500).json({ message: error.message });
@@ -42,7 +47,7 @@ router.post("/login", (req, res) => {
         // compare the password the hash stored in the database
         if (user && bcryptjs.compareSync(password, user.password)) {
             const token = makeJwt(user)
-          res.status(200).json({ message: "Welcome to our API", token});
+          res.status(200).json({ message: `Welcom Back ${user.username}`, username:user.username, token});
         } else {
           res.status(401).json({ message: "Invalid credentials" });
         }
