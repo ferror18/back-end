@@ -20,7 +20,9 @@ async function add(user, genDF) {
   try {
     const [id] = await db("accounts").insert(user, "id");
     const newUser =  await findById(id);
-    genDF?await generateDefaultBoard(newUser):'';
+    if (genDF) {
+      await generateDefaultBoard(newUser)
+    }
     return newUser
   } catch (error) {
     throw error;
