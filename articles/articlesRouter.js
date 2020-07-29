@@ -11,7 +11,7 @@ router.post('/', async (req, res) => {
 
 router.get('/',  (req, res) => {
     // const newArticle = await Articles.add(makeArticleFrom(req.body))
-    Articles.findAll(req.body.board_id)
+    Articles.findAll(req.params.board_id)
     .then(response => {
         const owner = jwt.verify(req.headers.authorization, SECRET).subject;
         console.log(response);
