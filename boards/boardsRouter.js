@@ -42,7 +42,7 @@ router.get('/:id', async (req, res) => {
 
 router.patch('/:id', async (req, res) => {
     const owner = jwt.verify(req.headers.authorization, SECRET).subject; 
-    res.status(200).json({board:await Boards.update([req.body, req.params.id]), message:'Success'})
+    res.status(200).json({message:'Success board has changed'})
 })
 
 router.delete('/:id', async (req, res) => {

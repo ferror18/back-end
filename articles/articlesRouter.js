@@ -28,15 +28,7 @@ router.get('/:id', async (req, res) => {
 
 router.patch('/:id', async (req, res) => {
     const owner = jwt.verify(req.headers.authorization, SECRET).subject; 
-    res.status(200).json({message:'Success article has been changed'})
-    // Articles.update([req.body, req.params.id])
-    // .then( response => {
-    //     // res.status(200).json({article: await Articles.findById(response.id), message: "Success"})res.status(200).json({article: response, message: "Success"}
-    //     Articles.findById(response.id)
-    //     .then(nestedResponse => console.log(nestedResponse))
-    //     .catch(error => res.send(error))
-    // })
-    // .catch(error => res.send(error))
+    res.status(200).json({message:'Success article has changed'})
 })
 
 router.delete('/:id', async (req, res) => {
