@@ -17,6 +17,10 @@ module.exports = {
     testing: {
         client: "pg",
         connection: pgConnectionTesting,
+        pool: {
+            min: 1,
+            max: 1,
+        },
         migrations: {
             directory: "./data/migrations",
         },

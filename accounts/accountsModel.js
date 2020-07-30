@@ -1,5 +1,12 @@
-const db = require("../data/dbConfig.js");
 const { generateDefaultBoard } = require("../boards/boardsModel.js");
+const { genericModel: {
+  genFindAll,
+  genFindBy,
+  genAdd,
+  genFindById
+} } = require("../globalServices")
+const dbname = 'accounts';
+
 
 module.exports = {
   add,
@@ -9,26 +16,26 @@ module.exports = {
 };
 
 async function findAll() {
-  return await db("accounts").select("id", "username").orderBy("id");
+  return await genFindAll(dbname);
 }
-
 async function findBy(filter) {
-  return await db("accounts").where(filter).orderBy("id");
+  try {
+    return await genFindBy(filter, dbname)
+  } catch (error) {
+    return error
+  }
 }
 
-async function add(user, genDF) {
+async function add(user) {
   try {
-    const [id] = await db("accounts").insert(user, "id");
-    const newUser =  await findById(id);
-    if (genDF) {
-      await generateDefaultBoard(newUser)
-    }
-    return newUser
+    const newUser = await genAdd(user, dbname);
+    await generateDefaultBoard(newUser);
+    return await newUser
   } catch (error) {
-    throw error;
+    return error
   }
 }
 
 async function findById(id) {
-  return await db("accounts").where({ id }).first();
+  return await genFindById(id, dbname)
 }
