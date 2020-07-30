@@ -18,7 +18,7 @@ describe("Accounts model", function () {
         });
         it("should correctly insert user", async () => {
             const allAccounts = await db("accounts");
-            console.log(await allAccounts);
+            // console.log(await allAccounts);
             await expect(await allAccounts).toHaveLength(2);
         });
         it("Should add the correct data", async () => {

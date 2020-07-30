@@ -44,9 +44,9 @@ globalServices.genericModel = {
        for (const iterator of Object.keys(updates)) {
         await db(dbname).where('id', '=', id).update({[iterator]: updates[iterator]})
       }
-      return await findById(id)
+      return await globalServices.genericModel.genFindById(id, dbname);
     } catch (error) {
-      console.log(updates, id, dbname);
+      // console.log(updates, id, dbname);
       return error
     }
     },
