@@ -8,7 +8,7 @@
     "server": "cross-env DB_ENV=development nodemon --exec npm run babel:node -- ./index.js",
     "test": "cross-env DB_ENV=testing jest --watchAll -i",
     "start": "npm run babel:node ./index.js",
-    "heroku-postbuild": "npm install" //called automatically when application is build on Heroku server
+    "heroku-postbuild": "npm install"
   },
   "repository": {
     "type": "git",
