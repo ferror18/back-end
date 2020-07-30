@@ -2,7 +2,8 @@ const router = require("express").Router();
 const Articles = require("./articlesModel");
 const { SECRET } = require("../globalConstants");
 const jwt = require("jsonwebtoken");
-const { makeArticleFrom } = require('./articlesServices.js')
+const { makeArticleFrom } = require('./articlesServices.js');
+const { prependOnceListener } = require("../data/dbConfig");
 
 router.post('/', async (req, res) => {
     const newArticle = await Articles.add(makeArticleFrom(req.body))
@@ -13,13 +14,10 @@ router.get('/from/:id',  async (req, res) => {
    try {
     const owner = jwt.verify(req.headers.authorization, SECRET).subject;
     console.log(req.params.id);
-    res.status(200).json(await Articles.findAll(req.params.id));
+    res.status(200).json(await Articles.findBy({board_id: req.params.id}));
    } catch (error) {
        res.send(error);
    };
-    // const owner = jwt.verify(req.headers.authorization, SECRET).subject;
-    // console.log(req.params.id)
-    // res.status
 });
 
 router.get('/:id', async (req, res) => {

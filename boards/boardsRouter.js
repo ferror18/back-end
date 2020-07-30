@@ -11,7 +11,8 @@ router.get('/public/:id', async (req, res) => {
     res.status(200).json(await Boards.findBy({"is_public": true, id: req.params.id}))
 })
 router.post('/', async (req, res) => {
-    // console.log(req.headers);
+    try {
+        // console.log(req.headers);
     const decoded = jwt.verify(req.headers.authorization, SECRET);
     // console.log(req.body);
     const newBoard = await Boards.add({
@@ -21,6 +22,9 @@ router.post('/', async (req, res) => {
         is_public: req.body.is_public || false
     })
     res.status(200).json(newBoard)
+    } catch (error) {
+        res.send(error)
+    }
 })
 
 router.get('/', async (req, res) => {
@@ -56,9 +60,14 @@ router.patch('/:id', async (req, res) => {
 })
 
 router.delete('/:id', async (req, res) => {
-    const owner = jwt.verify(req.headers.authorization, SECRET).subject;
-    const record = await Boards.findById(req.params.id); 
-    res.status(200).json({ message: `Board "${record.name}" deleted`, count: await Boards.remove(req.params.id)})
+    try {
+        const owner = jwt.verify(req.headers.authorization, SECRET).subject;
+        const record = await Boards.findById(req.params.id); 
+        res.status(200).json({ message: `Board '${record.name}' deleted`, count: await Boards.remove(req.params.id)})
+
+    } catch (error) {
+        res.send(error)
+    }
 })
 
 module.exports = router;

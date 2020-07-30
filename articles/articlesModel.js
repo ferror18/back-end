@@ -1,48 +1,39 @@
-const db = require('../data/dbConfig.js'); 
+const db = require('../data/dbConfig.js');
+const { genericModel: {
+  genFindAll,
+  genFindBy,
+  genAdd,
+  genFindById,
+  genUpdate,
+  genRemove
+} } = require("../globalServices")
+const dbname = 'articles';
 
 module.exports = {
-    add,
-    findAll,
-    findBy,
-    findById,
-    remove,
-    update
-  };
-  
-  async function findAll(board_id) {
-    return await db("articles").select("*").where("board_id", board_id).orderBy("created_at");
-  }
-  
+  add,
+  findBy,
+  findById,
+  remove,
+  update
+};
+
+
   async function findBy(filter) {
-    return await db("articles").where(filter).orderBy("created_at");
+    return await genFindBy(filter, dbname)
   }
   
-  async function add(article) {
-    try {
-      const [id] = await db("articles").insert(article, "id");
-      return await findById(id);
-    } catch (error) {
-      throw error;
-    }
+  async function add(user, genDF) {
+    return await genAdd(user, dbname, genDF);
   }
   
   async function findById(id) {
-    return await db("articles").where({ id }).first();
+    return await genFindById(id, dbname)
   }
   
-  async function update({ updates, id }) {
-    try {
-      for (const iterator of Object.keys(updates)) {
-        await db('articles').where('id', '=', id).update({[iterator]: updates[iterator]})
-      }
-      return await findById(id)
-    } catch (error) {
-      return error
-    }
+  async function update(info) {
+    return await genUpdate({...info, dbname})
   }
   
-  async function remove(article_id) {
-    return db('articles')
-    .where({ id: article_id })
-    .del()
+  async function remove(board_id) {
+    return await genRemove(board_id,dbname);
   }

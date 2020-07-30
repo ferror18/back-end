@@ -341,7 +341,7 @@ ___
 ___
 
 ### Get all Articles from a board
-#### GET |*`  /articles `*|*` PROTECTED`*
+#### GET |*`  /articles/from/:board_id `*|*` PROTECTED`*
 ###### Parameters
 |Name              |Type         |Description                    |Conditions                            | 
 |:----------------:|:-----------:|:-----------------------------:|:-------------------------------------|
@@ -350,14 +350,14 @@ ___
 ##### In `HEADERS` sent as *JSON* :
 ```js
 	{
-		"Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+		"Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+		"board_id": 1 //On the URL
   	}
 ```
 ##### In `BODY` sent as *JSON* :
 ```js
-	{
-        "board_id": 1
-	}
+	
+	
 ```
 #### *SUCCESS*
 #### *FAILURE*
@@ -382,10 +382,7 @@ ___
 ```
 ##### In `BODY` sent as *JSON* :
 ```js
-	{
-        "url": "http://example.com"
-        "board_id": 1
-	}
+
 ```
 #### *SUCCESS*
 #### *FAILURE*

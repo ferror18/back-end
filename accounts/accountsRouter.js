@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken')
 
 const router = require("express").Router();
 
-const Users = require("./accountsModel.js");
+const Accounts = require("./accountsModel.js");
 const { isValid } = require("./accountsServices.js");
 const { SECRET } = require("../globalConstants.js");
 
@@ -19,7 +19,7 @@ router.post("/register", (req, res) => {
     credentials.password = hash;
 
     // save the user to the database
-    Users.add(credentials, true)
+    Accounts.add(credentials)
       .then(user => {
         res.status(201).json({ data: {
           "id": user.id,
@@ -42,7 +42,7 @@ router.post("/login", (req, res) => {
   const { username, password } = req.body;
 
   if (isValid(req.body)) {
-    Users.findBy({ username: username })
+    Accounts.findBy({ username: username })
       .then(([user]) => {
         // compare the password the hash stored in the database
         if (user && bcryptjs.compareSync(password, user.password)) {
@@ -67,7 +67,7 @@ function makeJwt(user) {
         subject: user.id
     }
     const options = {
-        expiresIn: '6h'
+        expiresIn: '24h'
     }
     return jwt.sign(payload, SECRET, options)
 }
