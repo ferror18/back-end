@@ -6,9 +6,11 @@ module.exports = {
             description: "Lorem Ipsum...",
             thumbnail: null
           },
-        brd1: {
+        brdPub: {
             name: "Public board",
-            description: "Lorem Ipsum..."
+            description: "Lorem Ipsum...",
+            owner: 1,
+            is_public: true
         }
     }
 }

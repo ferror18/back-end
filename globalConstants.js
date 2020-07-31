@@ -5,5 +5,6 @@ module.exports = {
         mode: 'truncate', // Valid options 'truncate', 'delete'	
         restartIdentity: true, // Used to tell PostgresSQL to reset the ID counter	
         ignoreTables: ["knex_migrations", "knex_migrations_lock"]	
-      }
+      },
+    ROUNDS : process.env.BCRYPT_ROUNDS || 8,
 } 

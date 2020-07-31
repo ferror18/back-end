@@ -416,7 +416,7 @@ ___
         "board_id": 1,
         "url": "http://example.com/mycoolarticle", //Include Only if updating this field
         "thumbnail": "xyz", //Include Only if updating this field
-        "tittle": "Some title", //Include Only if updating this field
+        "title": "Some title", //Include Only if updating this field
         "author": "some author", //Include Only if updating this field
         "host": "http://example.com", //Include Only if updating this field
         "published_on": "timestamp" //Include Only if updating this field
