@@ -20,8 +20,22 @@ server.use(express.json());
 server.use('/', accountsRouter);
 server.use('/boards', boardsRouter);
 server.use('/articles', articlesRouter);
-server.get('/', (req, res) => res.send('<h1>API is available</h1>'));
+server.get('/', (req, res) => res.status(200).send('<h1>API is available</h1>'));
 //network
-server.listen(PORT, () => {
-  console.log(`\n=== Server listening on port ${PORT} ===\n`);
-});
+
+const noEnv = process.env.NODE_ENV;
+if (noEnv === 'test') {
+  try {
+    module.exports = server
+  } catch (error) {
+    throw new Error(`NODE_ENV: "${ noEnv }" is not supported`)
+  }
+} if (noEnv === 'production' || noEnv === 'development') {
+  try {
+    server.listen(PORT, () => {
+      console.log(`\n=== Server listening on port ${PORT} ===\n`);
+    });
+  } catch (error) {
+    throw new Error(`NODE_ENV: "${ noEnv }" is not supported`)
+  }
+}

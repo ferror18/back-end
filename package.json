@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "babel:node": "./node_modules/.bin/babel-node --presets=@babel/env --plugins=@babel/plugin-proposal-throw-expressions",
-    "server": "cross-env DB_ENV=development nodemon --exec npm run babel:node -- ./index.js",
+    "server": "cross-env NODE_ENV=development DB_ENV=development nodemon --exec npm run babel:node -- ./index.js",
     "test": "cross-env DB_ENV=testing jest --watchAll -i",
-    "start": "npm run babel:node ./index.js",
+    "start": "cross-env NODE_ENV=production npm run babel:node ./index.js",
     "heroku-postbuild": "npm install"
   },
   "repository": {
