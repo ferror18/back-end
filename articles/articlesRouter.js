@@ -27,8 +27,8 @@ router.get('/:id', async (req, res) => {
 })
 
 router.patch('/:id', async (req, res) => {
-    const owner = jwt.verify(req.headers.authorization, SECRET).subject; 
-    res.status(200).json({message:'Success article has changed', Article: Articles.update({updates: req.body, id:req.params.id})})
+    const owner = jwt.verify(req.headers.authorization, SECRET).subject;
+    res.status(200).json({message:'Success article has changed', article: Articles.update({updates:req.body, id:req.params.id})});
 })
 
 router.delete('/:id', async (req, res) => {
